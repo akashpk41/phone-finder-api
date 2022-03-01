@@ -13,9 +13,17 @@ const searchPhone = () => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
   .then(res => res.json())
-  .then(data => displaySearchResult(data.data.slice(0,20)) )
+  .then(data => displaySearchResult(data.data.slice(0,20)) );
+  // ! loading speaner
+  loadingSpinner('block')
 
 }
+
+// ! function for show loading when something search.
+const loadingSpinner = style => {
+  document.getElementById('loading').style.display = style
+}
+
 // ! function for display search result into ui
 const displaySearchResult = phones => {
   // console.log(phones.slice(0,20));
@@ -37,7 +45,7 @@ const displaySearchResult = phones => {
   </div>
     `;
     phonesContainer.appendChild(div)
-
+    loadingSpinner('none')
 
   })
 
