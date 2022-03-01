@@ -12,3 +12,7 @@ body{
 #loading{
    display: none;
 }
+#not-available{
+   background-color: #c4eaf7;
+   display: none;
+}

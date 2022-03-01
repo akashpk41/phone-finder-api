@@ -15,19 +15,23 @@ const searchPhone = () => {
   .then(res => res.json())
   .then(data => displaySearchResult(data.data.slice(0,20)) );
   // ! loading speaner
-  loadingSpinner('block')
+  loadingSpinner('block');
+
 
 }
 
 // ! function for show loading when something search.
 const loadingSpinner = style => {
-  document.getElementById('loading').style.display = style
+  document.getElementById('loading').style.display = style;
 }
 
 // ! function for display search result into ui
 const displaySearchResult = phones => {
   // ! add one condition, if no phone found.
-
+  if( phones.length == [] ){
+    document.getElementById('not-available').style.display = 'block';
+    loadingSpinner('none')
+  }
   const phonesContainer = document.getElementById('phones');
   phonesContainer.textContent = ''
   phones.map( phone => {
@@ -47,7 +51,8 @@ const displaySearchResult = phones => {
     `;
     phonesContainer.appendChild(div)
     // ! hide spinner when search result show
-    loadingSpinner('none')
+    loadingSpinner('none');
+    document.getElementById('not-available').style.display = 'none';
 
   })
 
@@ -64,19 +69,12 @@ const loadPhoneDetails = phoneId => {
 
 // ! function for show phone details
 const showPhoneDetails = phoneDetails => {
+
   const phoneDetailsContainer = document.getElementById('phone-details');
-
-  const sensors = phoneDetails.mainFeatures.sensors;
-  sensors.map( sensor => {
-    const sensorfeatures = sensor;
-    console.log(sensorfeatures);
-    return sensorfeatures
-  } );
-
-
   // ! clear previous details
   phoneDetailsContainer.textContent = ''
   //! creating new element for show phone details in html page
+
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
@@ -85,7 +83,7 @@ const showPhoneDetails = phoneDetails => {
   <div class="card-body text-center">
     <h3 class="card-title fw-bold">${phoneDetails.name}</h3>
     <h4 class="card-title text-primary">${phoneDetails.brand}</h4>
-    <p class="card-title fw-bold ">Release Date: ${phoneDetails.releaseDate}</p>
+    <p class="card-title fw-bold ">Release Date: ${phoneDetails.releaseDate} </p>
 
     <!-- ! main features -->
     <ul class="list-group">
@@ -107,11 +105,11 @@ const showPhoneDetails = phoneDetails => {
     </ul>
     <!-- ! sensors area -->
     <div
-      class="d-flex bg-info my-3 align-items-center justify-content-center p-2 rounded-3"
+      class=" bg-info my-3 p-2 rounded-3"
     >
-      <h5>Sensors:</h5>
+    <h5 class="fw-bold text-center ">Sensors</h5>
       <p>
-       
+    ${phoneDetails.mainFeatures.sensors}
       </p>
     </div>
 
@@ -121,7 +119,8 @@ const showPhoneDetails = phoneDetails => {
         Others Features
       </li>
       <li class="list-group-item text-start">
-        <span class="fw-bold">WLAN:</span> ${phoneDetails.others.WLAN},
+        <span class="fw-bold">WLAN:</span>
+        ${phoneDetails.others.WLAN}
       </li>
       <li class="list-group-item list-group-item-dark text-start">
         <span class="fw-bold">Bluetooth:</span> ${phoneDetails.others.Bluetooth}
