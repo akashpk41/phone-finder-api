@@ -3,7 +3,6 @@ const searchPhone = () => {
   const searchText = searchField.value;
   //! clear search field.
   searchField.value = "";
-
   // ! condition for search feild
   if (searchText == "") {
     alert("Write Something To See Something!");
@@ -62,17 +61,16 @@ const loadPhoneDetails = (phoneId) => {
     .then((data) => showPhoneDetails(data.data));
 };
 
+
 // ! function for show phone details
 const showPhoneDetails = (phoneDetails) => {
   const phoneDetailsContainer = document.getElementById("phone-details");
   // ! clear previous details
   phoneDetailsContainer.textContent = "";
   //! creating new element for show phone details in html page
-
   const div = document.createElement("div");
   div.classList.add("card");
   div.innerHTML = `
-
   <img src="${phoneDetails.image}" class="card-img-top" alt="..." />
   <div class="card-body text-center">
     <h3 class="card-title fw-bold">${phoneDetails.name}</h3>
@@ -107,7 +105,8 @@ const showPhoneDetails = (phoneDetails) => {
         <span class="fw-bold">Memory:</span> ${phoneDetails.mainFeatures.memory}
       </li>
     </ul>
-    <!-- ! sensors area -->
+
+    <!-- ! phone sensors area -->
     <div
       class=" bg-info my-3 p-2 rounded-3"
     >
