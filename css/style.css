@@ -1,0 +1,7 @@
+/* ! common style */
+body{
+   background-color: rgba(173, 216, 230, 0.205);
+}
+#main-title{
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

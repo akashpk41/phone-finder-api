@@ -7,8 +7,21 @@
     <title>Phone Finder | Choose What You Need.</title>
     <!-- ! bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- ! custom css -->
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1>Hello World</h1>
+     <header class="container my-5 " >
+      <h1 id="main-title" class="text-center fw-bold mb-3 " >Phone Finder, Search Phone By Name</h1>
+      <div class="w-75 mx-auto " >
+         <div class="input-group">
+            <input id="search-field" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+            <button onclick="searchPhone()" class="btn btn-primary">Search </button>
+
+          </div>
+      </div>
+
+   </header>
+   <script src="js/phone.js"></script>
   </body>
 </html>
