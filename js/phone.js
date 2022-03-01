@@ -26,7 +26,8 @@ const loadingSpinner = style => {
 
 // ! function for display search result into ui
 const displaySearchResult = phones => {
-  // console.log(phones.slice(0,20));
+  // ! add one condition, if no phone found.
+
   const phonesContainer = document.getElementById('phones');
   phonesContainer.textContent = ''
   phones.map( phone => {
@@ -40,13 +41,28 @@ const displaySearchResult = phones => {
     <div class="card-body text-center ">
       <h4 class="card-title fw-bold "> Model: ${phone.phone_name}</h4>
       <h5 class="card-title text-primary "> Brand: ${phone.brand}</h5>
-      <button class="btn btn-outline-primary mt-3 "> More Details </button>
+      <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-outline-primary mt-3 "> More Details </button>
     </div>
   </div>
     `;
     phonesContainer.appendChild(div)
+    // ! hide spinner when search result show
     loadingSpinner('none')
 
   })
 
+}
+
+// ! function for load  phone details from api
+const loadPhoneDetails = phoneId => {
+  // console.log(phoneId);
+  const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
+  fetch(url)
+  .then(res => res.json())
+  .then( data => viewPhoneDetails(data.data))
+}
+
+// ! function for view phone details
+const viewPhoneDetails = phoneDetails => {
+  console.log(phoneDetails);
 }
