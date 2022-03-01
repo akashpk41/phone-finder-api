@@ -59,10 +59,87 @@ const loadPhoneDetails = phoneId => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
   fetch(url)
   .then(res => res.json())
-  .then( data => viewPhoneDetails(data.data))
+  .then( data => showPhoneDetails(data.data))
 }
 
-// ! function for view phone details
-const viewPhoneDetails = phoneDetails => {
-  console.log(phoneDetails);
+// ! function for show phone details
+const showPhoneDetails = phoneDetails => {
+  const phoneDetailsContainer = document.getElementById('phone-details');
+
+  const sensors = phoneDetails.mainFeatures.sensors;
+  sensors.map( sensor => {
+    const sensorfeatures = sensor;
+    console.log(sensorfeatures);
+    return sensorfeatures
+  } );
+
+
+  // ! clear previous details
+  phoneDetailsContainer.textContent = ''
+  //! creating new element for show phone details in html page
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML = `
+
+  <img src="${phoneDetails.image}" class="card-img-top" alt="..." />
+  <div class="card-body text-center">
+    <h3 class="card-title fw-bold">${phoneDetails.name}</h3>
+    <h4 class="card-title text-primary">${phoneDetails.brand}</h4>
+    <p class="card-title fw-bold ">Release Date: ${phoneDetails.releaseDate}</p>
+
+    <!-- ! main features -->
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">
+        Main Features
+      </li>
+      <li class="list-group-item text-start">
+        <span class="fw-bold">Storage:</span> ${phoneDetails.mainFeatures.storage}",
+      </li>
+      <li class="list-group-item list-group-item-dark text-start">
+        <span class="fw-bold">Display Size:</span> ${phoneDetails.mainFeatures.displaySize}
+      </li>
+      <li class="list-group-item text-start">
+        <span class="fw-bold">Chip Set:</span> ${phoneDetails.mainFeatures.chipSet}
+      </li>
+      <li class="list-group-item list-group-item-dark text-start">
+        <span class="fw-bold">Memory:</span> ${phoneDetails.mainFeatures.memory}
+      </li>
+    </ul>
+    <!-- ! sensors area -->
+    <div
+      class="d-flex bg-info my-3 align-items-center justify-content-center p-2 rounded-3"
+    >
+      <h5>Sensors:</h5>
+      <p>
+       
+      </p>
+    </div>
+
+    <!-- ! others features -->
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">
+        Others Features
+      </li>
+      <li class="list-group-item text-start">
+        <span class="fw-bold">WLAN:</span> ${phoneDetails.others.WLAN},
+      </li>
+      <li class="list-group-item list-group-item-dark text-start">
+        <span class="fw-bold">Bluetooth:</span> ${phoneDetails.others.Bluetooth}
+      </li>
+      <li class="list-group-item text-start">
+        <span class="fw-bold">GPS:</span> ${phoneDetails.others.GPS}
+      </li>
+      <li class="list-group-item list-group-item-dark text-start">
+        <span class="fw-bold">NFC:</span> ${phoneDetails.others.NFC}
+      </li>
+      <li class="list-group-item text-start">
+        <span class="fw-bold">Radio:</span> ${phoneDetails.others.Radio}
+      </li>
+      <li class="list-group-item list-group-item-dark text-start">
+        <span class="fw-bold">USB:</span> ${phoneDetails.others.USB}
+      </li>
+    </ul>
+  </div>
+  `;
+  phoneDetailsContainer.appendChild(div)
 }

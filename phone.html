@@ -8,58 +8,55 @@
     <!-- ! bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- ! custom css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-     <header class="container my-5 " >
-      <h1 id="main-title" class="text-center fw-bold mb-3 " ><span class="phone-finder text-primary " >Phone Finder,</span> Search Phone By Name</h1>
-      <div class="w-75 mx-auto " >
-         <div class="input-group">
-            <input id="search-field" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-            <button onclick="searchPhone()" class="btn btn-primary">Search </button>
-          </div>
+    <header class="container my-5">
+      <h1 id="main-title" class="text-center fw-bold mb-3">
+        <span class="phone-finder text-primary">Phone Finder,</span> Search
+        Phone By Name
+      </h1>
+      <div class="w-75 mx-auto">
+        <div class="input-group">
+          <input
+            id="search-field"
+            type="text"
+            class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)"
+          />
+          <button onclick="searchPhone()" class="btn btn-primary">
+            Search
+          </button>
+        </div>
 
-          <!-- ! loading spinner -->
-          <div id="loading" class="text-center mt-3 ">
-            <div class="spinner-grow"  style="width: 2rem; height: 2rem;" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
+        <!-- ! loading spinner -->
+        <div id="loading" class="text-center mt-3">
+          <div
+            class="spinner-grow"
+            style="width: 2rem; height: 2rem"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
           </div>
+        </div>
       </div>
-   </header>
+    </header>
 
-   <main>
-       <!-- ! more details area -->
-       <div  class="container my-5" >
-          <div id="phone-details" class="mx-auto" style="width: 18rem;">
-         <div class="card" >
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body text-center ">
-               <h3 class="card-title fw-bold "> model </h3>
-               <h4 class="card-title text-primary ">brand</h4>
-               <h5 class="card-title ">release date</h5>
-                  <!-- ! main features -->
-                  <ul class="list-group">
-                     <li class="list-group-item active" aria-current="true">Main Features</li>
-                     <li class="list-group-item text-start ">storage</li>
-                     <li class="list-group-item text-start ">displaySize</li>
-                     <li class="list-group-item text-start ">chipset</li>
-                     <li class="list-group-item text-start ">memory</li>
-                   </ul>
-            </div>
-          </div>
-          </div>
-
+    <main>
+      <!-- ! more details area -->
+      <div class="container my-5">
+        <div id="phone-details" class="mx-auto" style="width: 18rem">
+        
+        </div>
       </div>
       <!-- ! search result area -->
-      <div  class="container my-5" >
-      <div id="phones" class="row row-cols-1 row-cols-md-3 g-4">
-         <!-- ! search result will show here -->
-         </div>
+      <div class="container my-5">
+        <div id="phones" class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- ! search result will show here -->
+        </div>
       </div>
-   </main>
+    </main>
 
-
-   <script src="js/phone.js"></script>
+    <script src="js/phone.js"></script>
   </body>
 </html>
